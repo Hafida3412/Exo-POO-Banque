@@ -13,6 +13,7 @@ class Compte{
         $this->soldeInitial = $soldeInitial;
         $this->deviseMonetaire = $deviseMonetaire;
         $this->titulaire = $titulaire;
+       
     }
 
 
@@ -70,8 +71,14 @@ class Compte{
 
         return $this;
     }
-
-    public function __tostring(){
-        return $this->libelle;
+    
+    public function calcAge(){   
+        return $this->dateNaissance->diff(new DateTime())->y;
     }
+    public function getInfos(){
+        return $this->libelle. $this->soldeInitial. $this->deviseMonetaire.
+         $this->titulaire;
+    }
+
+
 }

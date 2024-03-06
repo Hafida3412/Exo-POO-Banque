@@ -9,14 +9,14 @@ class Titulaire{
     private array $comptesbancaires;
 
 
-public function __construct(string $nom, string $prenom, string $dateNaissance,
-string $ville){
-    $this->nom = $nom;
-    $this->prenom = $prenom;
-    $this->dateNaissance = new DateTime($dateNaissance);
-    $this->ville = $ville;
-    $this->comptesbancaires = [];
-}
+    public function __construct(string $nom, string $prenom, string $dateNaissance,
+    string $ville){
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->dateNaissance = new DateTime($dateNaissance);
+        $this->ville = $ville;
+        $this->comptesbancaires = [];
+    }
 
     public function getNom(): string
     {
@@ -77,23 +77,46 @@ string $ville){
     {
         return $this->comptesbancaires;
     }
-
- 
+    
+    
     public function setComptesbancaires(array $comptesbancaires)
     {
         $this->comptesbancaires = $comptesbancaires;
-
+        
         return $this;
     }
 
-    public function __toString(){
+    public function calcAge(){   
+        return $this->dateNaissance->diff(new DateTime())->y;
+    }
+        
+        public function addComptesbancaires(Comptebancaire $comptebancaire){
+            $this->comptesbancaires[] = $comptebancaire;
+        }
+        
+        
+        public function afficherComptesbancaires(){
+            $result = "<h2>Comptes bancaires de $this</h2>";
+            
+            foreach ($this->comptesbancaires as $comptebancaire){
+                $result .= $comptebancaire->getLibelle(). $comptebancaire->getsoldeinitial()
+                .$comptebancaire->getdevisemonetaire(). $comptebancaire->getTitulaire;
+                
+            }
+            return $result;
+            
+        }
+
+        public function getInfos(){
+        return $this->nom. $this->prenom. $this->ville."<br> ". $this->dateNaissance->diff(new DateTime())->y. "ans.";
+        }      
+        
+        public function __toString(){
         return $this->prenom." ".$this->nom;
     }
 
-    public function getInfos(){
-        return $this->nom. $this->prenom. $this->ville;
-    }
 }
 
- $t1 = new Titulaire("MATHIEU", "Quentin", "Strasbourg");
- echo $t1->getInfos;
+
+
+
