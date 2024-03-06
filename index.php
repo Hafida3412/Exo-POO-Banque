@@ -9,12 +9,12 @@ spl_autoload_register(function ($class_name){
 });
 
 
-$t1 = new Titulaire("MATHIEU<br>", "Quentin<br>", "1981-05-13", "Strasbourg, <br>Livret A");
-$c1 = new Compte("Livret A<br>", 1500, "euros<br>", $t1,);
+$t1 = new Titulaire("MATHIEU", "Quentin", "1981-05-13", "Strasbourg, Livret A");
+$c1 = new Compte("Livret A", 1500, "euros", $t1);
+$c2 = new Compte("Livret B", 15, "euros", $t1);
 
- echo $t1->getInfos();
+echo $t1->getInfos();
+echo $t1->afficherComptesbancaires();
 
- echo $t1->afficherComptesbancaires();
-
- echo $c1->getInfos();
+//echo $c1->getInfos();
 

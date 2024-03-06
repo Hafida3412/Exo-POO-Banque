@@ -90,31 +90,29 @@ class Titulaire{
         return $this->dateNaissance->diff(new DateTime())->y;
     }
         
-        public function addComptesbancaires(Comptebancaire $comptebancaire){
-            $this->comptesbancaires[] = $comptebancaire;
-        }
+    public function addComptesbancaires(Compte $comptebancaire){
+        $this->comptesbancaires[] = $comptebancaire;
+    }
+    
+    
+    public function afficherComptesbancaires(){
+        $result = "<h2>Comptes bancaires de $this</h2>";
         
-        
-        public function afficherComptesbancaires(){
-            $result = "<h2>Comptes bancaires de $this</h2>";
-            
-            foreach ($this->comptesbancaires as $comptebancaire){
-                $result .= $comptebancaire->getLibelle(). $comptebancaire->getsoldeinitial()
-                .$comptebancaire->getdevisemonetaire(). $comptebancaire->getTitulaire;
-                
-            }
-            return $result;
+        foreach ($this->comptesbancaires as $comptebancaire){
+            $result .= $comptebancaire->getLibelle()."<br>". $comptebancaire->getsoldeinitial()
+            .$comptebancaire->getdevisemonetaire()."<br>". $comptebancaire->getTitulaire()."<br>";
             
         }
-
-        public function getInfos(){
-        return $this->nom. $this->prenom. $this->ville."<br> ". $this->dateNaissance->diff(new DateTime())->y. "ans.";
-        }      
-        
-        public function __toString(){
-        return $this->prenom." ".$this->nom;
+        return $result; 
     }
 
+    public function getInfos(){
+        return $this->nom. $this->prenom. $this->ville. $this->dateNaissance->diff(new DateTime())->y. "ans.";
+    }      
+    
+    public function __toString(){
+        return $this->prenom." ".$this->nom;
+    }
 }
 
 

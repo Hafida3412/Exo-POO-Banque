@@ -13,9 +13,8 @@ class Compte{
         $this->soldeInitial = $soldeInitial;
         $this->deviseMonetaire = $deviseMonetaire;
         $this->titulaire = $titulaire;
-       
+        $this->titulaire->addComptesbancaires($this);
     }
-
 
     public function getLibelle(): string
     {
@@ -72,13 +71,10 @@ class Compte{
         return $this;
     }
     
-    public function calcAge(){   
-        return $this->dateNaissance->diff(new DateTime())->y;
-    }
+
+
     public function getInfos(){
-        return $this->libelle. $this->soldeInitial. $this->deviseMonetaire.
+        return $this->libelle."  ". $this->soldeInitial."  ".$this->deviseMonetaire."  ".
          $this->titulaire;
     }
-
-
 }
