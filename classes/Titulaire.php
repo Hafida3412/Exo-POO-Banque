@@ -89,4 +89,11 @@ string $ville){
     public function __toString(){
         return $this->prenom." ".$this->nom;
     }
+
+    public function getInfos(){
+        return $this->nom. $this->prenom. $this->ville;
+    }
 }
+
+ $t1 = new Titulaire("MATHIEU", "Quentin", "Strasbourg");
+ echo $t1->getInfos;
